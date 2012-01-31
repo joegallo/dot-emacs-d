@@ -30,6 +30,9 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
+;; === just do it, okay ===
+(setq require-final-newline t)
+
 ;; === this is how you learn ===
 (global-set-key (kbd "C-x C-c") nil)
 

@@ -67,6 +67,9 @@
 ;; === clojure repls should be awesome ===
 (setq slime-net-coding-system 'utf-8-unix)
 
+;; === more like esk-ugly-fn ===
+(remove-hook 'clojure-mode-hook 'esk-pretty-fn)
+
 ;; === ssh agent fix ===
 (defun agent-path ()
   (if (eq system-type 'darwin)

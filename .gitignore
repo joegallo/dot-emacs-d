@@ -1,6 +1,9 @@
 auto-save-list
 backups
 elpa
+eshell
 places
 swank
-
+tramp
+url
+var

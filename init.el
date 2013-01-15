@@ -5,9 +5,9 @@
 (package-initialize)
 
 (defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings
-                                  color-theme color-theme-twilight
-                                  clojure-mode clojure-test-mode gist
-                                  markdown-mode))
+                                  ac-nrepl auto-complete clojure-mode
+                                  clojure-test-mode gist color-theme
+                                  color-theme-twilight markdown-mode nrepl))
 
 (when (null package-archive-contents)
   (package-refresh-contents))

@@ -6,7 +6,8 @@
 
 (defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings
                                   color-theme color-theme-twilight
-                                  clojure-mode clojure-test-mode))
+                                  clojure-mode clojure-test-mode gist
+                                  markdown-mode))
 
 (when (null package-archive-contents)
   (package-refresh-contents))
@@ -15,10 +16,15 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
+;; === PHILLLLLLLL!!!! ===
+(setq ido-ubiquitous-enabled nil)
+(setq ido-use-virtual-buffers nil)
+
 ;; === appearance (font, menu, size) ===
 ;; (set-face-attribute 'default nil :height 100)
 ;; (add-to-list 'default-frame-alist '(height . 36))
 ;; (add-to-list 'default-frame-alist '(width . 120))
+(global-hl-line-mode 1)
 (setq initial-scratch-message nil)
 (setq visible-bell nil)
 (add-to-list 'load-path "~/.emacs.d/elpa/color-theme-twilight-0.1")
@@ -39,9 +45,6 @@
 
 ;; === just do it, okay ===
 (setq require-final-newline t)
-
-;; === this is how you learn ===
-(global-set-key (kbd "C-x C-c") nil)
 
 ;; === find file in project ===
 (setq ffip-patterns ".*")
@@ -79,6 +82,14 @@
 
 ;; === more like esk-ugly-fn ===
 (remove-hook 'clojure-mode-hook 'esk-pretty-fn)
+
+;; === fix for silly clojure-jack-in ballsness ===
+(remove-hook 'slime-indentation-update-hooks 'put-clojure-indent)
+
+;; === don't echo my commands in shell mode ===
+(defun comint-stfu ()
+  (setq comint-process-echoes t))
+(add-hook 'comint-mode-hook 'comint-stfu)
 
 ;; === ssh agent fix ===
 (defun agent-path ()

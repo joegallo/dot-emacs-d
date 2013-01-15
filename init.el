@@ -27,6 +27,8 @@
 (global-hl-line-mode 1)
 (setq initial-scratch-message nil)
 (setq visible-bell nil)
+
+(require 'color-theme)
 (add-to-list 'load-path "~/.emacs.d/elpa/color-theme-twilight-0.1")
 (autoload 'color-theme-twilight "color-theme-twilight" nil t)
 (when (>= (display-color-cells) 256)

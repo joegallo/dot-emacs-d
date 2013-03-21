@@ -7,3 +7,5 @@ swank
 tramp
 url
 var
+/.smex-items
+/ac-comphist.dat

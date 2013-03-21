@@ -16,18 +16,15 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-;; === PHILLLLLLLL!!!! ===
-(setq ido-ubiquitous-enabled nil)
-(setq ido-use-virtual-buffers nil)
-
-;; === appearance (font, menu, size) ===
-;; (set-face-attribute 'default nil :height 100)
-;; (add-to-list 'default-frame-alist '(height . 36))
-;; (add-to-list 'default-frame-alist '(width . 120))
+;; === un-annoy ===
 (global-hl-line-mode 1)
 (setq initial-scratch-message nil)
 (setq visible-bell nil)
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq require-final-newline t)
 
+;; === colors ===
 (require 'color-theme)
 (add-to-list 'load-path "~/.emacs.d/elpa/color-theme-twilight-0.1")
 (autoload 'color-theme-twilight "color-theme-twilight" nil t)
@@ -40,13 +37,6 @@
      (set-face-foreground 'magit-diff-del "red3")
      (when (not window-system)
        (set-face-background 'magit-item-highlight "gray13"))))
-
-;; === no back up files ===
-(setq make-backup-files nil)
-(setq auto-save-default nil)
-
-;; === just do it, okay ===
-(setq require-final-newline t)
 
 ;; === find file in project ===
 (setq ffip-patterns ".*")
@@ -75,12 +65,6 @@
         (select-window (funcall selector)))
       (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
 (global-set-key (kbd "C-x 4 t") 'transpose-buffers)
-
-;; === stfu ===
-(eval-after-load 'slime '(setq slime-protocol-version 'ignore))
-
-;; === clojure repls should be awesome ===
-(setq slime-net-coding-system 'utf-8-unix)
 
 ;; === more like esk-ugly-fn ===
 (remove-hook 'clojure-mode-hook 'esk-pretty-fn)
@@ -129,6 +113,8 @@
 (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
 
 (define-key nrepl-interaction-mode-map (kbd "C-c M-p") 'nrepl-set-ns)
+
+(define-key nrepl-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc)
 
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'nrepl-mode))

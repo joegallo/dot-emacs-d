@@ -142,3 +142,27 @@
 (add-hook 'nrepl-interaction-mode-hook 'set-auto-complete-as-completion-at-point-function)
 
 (define-key nrepl-interaction-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc)
+
+;; === awesomely reenabled paredit when conflicts are gone
+
+(defvar reenable-paredit-modes
+  '(emacs-lisp-mode clojure-mode lisp-mode)
+  "Modes to automatically re-enable paredit for after fixing version-control conflict markers")
+
+(put 'unresolved-conflict 'error-conditions '(unresolved-conflict error))
+(put 'unresolved-conflict 'error-message "Unresolved conflict markers in file")
+
+(defun mark-git-conflict-resolved ()
+  (interactive)
+  (when (apply #'derived-mode-p reenable-paredit-modes)
+    (paredit-mode t)) ;; will fail and abort if parens are unbalanced
+  (if (save-excursion
+        (beginning-of-buffer)
+        (re-search-forward "[<=>]\\{7\\}" nil t))
+      (let ((error-location (match-beginning 0)))
+        (goto-char error-location)
+        (signal 'unresolved-conflict (list error-location)))
+    (save-buffer)
+    (shell-command (concat "git add " (buffer-file-name)))))
+
+(global-set-key (kbd "C-c a") 'mark-git-conflict-resolved)

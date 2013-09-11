@@ -23,6 +23,7 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq require-final-newline t)
+(setq ido-use-virtual-buffers nil)
 
 ;; === colors ===
 (defun plist-to-alist (the-plist)

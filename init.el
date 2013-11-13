@@ -5,9 +5,9 @@
 (package-initialize)
 
 (defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings
-                                  ac-nrepl auto-complete clojure-mode
-                                  clojure-test-mode gist color-theme
-                                  color-theme-twilight markdown-mode nrepl))
+                                  clojure-mode clojure-test-mode
+                                  color-theme color-theme-twilight
+                                  gist markdown-mode nrepl))
 
 (when (null package-archive-contents)
   (package-refresh-contents))
@@ -136,39 +136,7 @@
     (setenv "SSH_AUTH_SOCK" agent)
     (message agent)))
 
-;; ===
-(setq nrepl-lein-command "lein2")
-
-(add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
-(add-hook 'nrepl-interaction-mode-hook 'subword-mode)
-(add-hook 'nrepl-mode-hook 'subword-mode)
-(add-hook 'nrepl-mode-hook 'paredit-mode)
-
-(require 'auto-complete-config)
-(ac-config-default)
-
-(require 'ac-nrepl)
-(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
-(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
-
-(define-key nrepl-interaction-mode-map (kbd "C-c M-p") 'nrepl-set-ns)
-
-(define-key nrepl-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc)
-
-(eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'nrepl-mode))
-
-(defun set-auto-complete-as-completion-at-point-function ()
-  (setq completion-at-point-functions '(auto-complete)))
-(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-
-(add-hook 'nrepl-mode-hook 'set-auto-complete-as-completion-at-point-function)
-(add-hook 'nrepl-interaction-mode-hook 'set-auto-complete-as-completion-at-point-function)
-
-(define-key nrepl-interaction-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc)
-
 ;; === awesomely reenabled paredit when conflicts are gone
-
 (defvar reenable-paredit-modes
   '(emacs-lisp-mode clojure-mode lisp-mode)
   "Modes to automatically re-enable paredit for after fixing version-control conflict markers")
@@ -190,3 +158,31 @@
     (shell-command (concat "git add " (buffer-file-name)))))
 
 (global-set-key (kbd "C-c a") 'mark-git-conflict-resolved)
+
+;; === nrepl and stuff, not quite finished here
+(add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
+(add-hook 'nrepl-interaction-mode-hook 'subword-mode)
+(add-hook 'nrepl-mode-hook 'subword-mode)
+(add-hook 'nrepl-mode-hook 'paredit-mode)
+
+;; (require 'auto-complete-config)
+;; (ac-config-default)
+
+;; (require 'ac-nrepl)
+;; (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+;; (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
+
+;; (define-key nrepl-interaction-mode-map (kbd "C-c M-p") 'nrepl-set-ns)
+
+;; (define-key nrepl-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc)
+;; (define-key nrepl-interaction-mode-map (kbd "C-c C-d") 'ac-nrepl-popup-doc)
+
+;; (eval-after-load "auto-complete"
+;;   '(add-to-list 'ac-modes 'nrepl-mode))
+
+;; (defun set-auto-complete-as-completion-at-point-function ()
+;;   (setq completion-at-point-functions '(auto-complete)))
+;; (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
+
+;; (add-hook 'nrepl-mode-hook 'set-auto-complete-as-completion-at-point-function)
+;; (add-hook 'nrepl-interaction-mode-hook 'set-auto-complete-as-completion-at-point-function)

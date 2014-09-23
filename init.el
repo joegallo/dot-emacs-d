@@ -82,10 +82,14 @@
 
 ;; === remapping paredit keys, because emacs is a heart-breaker ===
 (require 'paredit)
-(define-key paredit-mode-map (kbd "C-o C-r") 'paredit-forward-slurp-sexp)
-(define-key paredit-mode-map (kbd "C-o M-r") 'paredit-forward-barf-sexp)
-(define-key paredit-mode-map (kbd "C-o C-l") 'paredit-backward-slurp-sexp)
-(define-key paredit-mode-map (kbd "C-o M-l") 'paredit-backward-barf-sexp)
+
+(eval-after-load 'paredit
+  '(progn
+     (define-key paredit-mode-map (kbd "M-)") 'paredit-forward-slurp-sexp)
+     (define-key paredit-mode-map (kbd "C-o C-r") 'paredit-forward-slurp-sexp)
+     (define-key paredit-mode-map (kbd "C-o M-r") 'paredit-forward-barf-sexp)
+     (define-key paredit-mode-map (kbd "C-o C-l") 'paredit-backward-slurp-sexp)
+     (define-key paredit-mode-map (kbd "C-o M-l") 'paredit-backward-barf-sexp)))
 
 ;; === transpose buffers
 (defun transpose-buffers (arg)

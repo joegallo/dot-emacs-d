@@ -29,13 +29,13 @@
 
 ;; === un-annoy ===
 (global-hl-line-mode 1)
-(setq initial-scratch-message nil)
-(setq visible-bell nil)
-(setq make-backup-files nil)
-(setq auto-save-default nil)
-(setq require-final-newline t)
-(setq ido-use-virtual-buffers nil)
-(setq inhibit-startup-message t)
+(setq auto-save-default nil
+      ido-use-virtual-buffers nil
+      inhibit-startup-message t
+      initial-scratch-message nil
+      make-backup-files nil
+      require-final-newline t
+      visible-bell nil)
 
 ;; === colors ===
 (defun plist-to-alist (the-plist)

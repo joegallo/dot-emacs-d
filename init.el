@@ -2,6 +2,8 @@
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://hiddencameras.milkbox.net/packages/") t)
 (package-initialize)
 
 (defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings

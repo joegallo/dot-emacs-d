@@ -116,7 +116,8 @@
                                                 (current-buffer)))))))))
             nil t))
 
-(add-hook 'shell-mode-hook 'track-shell-directory/procfs)
+(when (file-exists-p "/proc")
+  (add-hook 'shell-mode-hook 'track-shell-directory/procfs))
 
 ;; === ssh agent fix ===
 (defun agent-path ()

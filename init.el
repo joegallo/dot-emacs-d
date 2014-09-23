@@ -48,18 +48,6 @@
       (setq the-plist (cddr the-plist)))
     alist))
 
-;; === colors ===
-(defun plist-to-alist (the-plist)
-  (defun get-tuple-from-plist (the-plist)
-    (when the-plist
-      (cons (car the-plist) (cadr the-plist))))
-
-  (let ((alist '()))
-    (while the-plist
-      (add-to-list 'alist (get-tuple-from-plist the-plist))
-      (setq the-plist (cddr the-plist)))
-    alist))
-
 (require 'color-theme)
 (add-to-list 'load-path "~/.emacs.d/elpa/color-theme-twilight-0.1")
 (autoload 'color-theme-twilight "color-theme-twilight" nil t)

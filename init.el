@@ -153,7 +153,7 @@
     (setenv "SSH_AUTH_SOCK" agent)
     (message agent)))
 
-;; === awesomely reenable paredit when conflicts are gone
+;; === awesomely reenable paredit when conflicts are gone ===
 (defvar reenable-paredit-modes
   '(emacs-lisp-mode clojure-mode lisp-mode)
   "Modes to automatically re-enable paredit for after fixing version-control conflict markers")
@@ -204,16 +204,16 @@
 ;; (add-hook 'nrepl-mode-hook 'set-auto-complete-as-completion-at-point-function)
 ;; (add-hook 'nrepl-interaction-mode-hook 'set-auto-complete-as-completion-at-point-function)
 
-;; === uhhhh python stuff i guess ===
+;; === python ===
 (elpy-enable)
 (elpy-use-ipython)
 
-;; === work stuff ===
+;; === work ===
 (let ((sonian-nav-file "~/Code/sa-safe/.elisp/sonian-navigation.el"))
   (when (file-exists-p sonian-nav-file)
     (load (expand-file-name sonian-nav-file))))
 
-;; === ledger stuff ===
+;; === ledger ===
 (let ((ledger-file "~/Code/ledger/lisp/ledger-mode.el"))
   (when (file-exists-p ledger-file)
     (setq ledger-post-account-alignment-column 2)

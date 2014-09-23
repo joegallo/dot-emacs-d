@@ -35,6 +35,7 @@
 (setq auto-save-default nil)
 (setq require-final-newline t)
 (setq ido-use-virtual-buffers nil)
+(setq inhibit-startup-message t)
 
 ;; === colors ===
 (defun plist-to-alist (the-plist)

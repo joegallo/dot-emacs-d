@@ -37,6 +37,11 @@
       require-final-newline t
       visible-bell nil)
 
+;; === smex is great ===
+(setq smex-save-file (concat user-emacs-directory ".smex-items"))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+
 ;; === colors ===
 (defun plist-to-alist (the-plist)
   (defun get-tuple-from-plist (the-plist)

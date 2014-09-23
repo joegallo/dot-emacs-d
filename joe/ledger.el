@@ -1,6 +1,0 @@
-(let ((ledger-file "~/Code/ledger/lisp/ledger-mode.el"))
-  (when (file-exists-p ledger-file)
-    (setq ledger-post-account-alignment-column 2)
-    (custom-set-faces '(ledger-font-xact-highlight-face ((t (:background "color-234")))))
-    (add-to-list 'load-path "~/Code/ledger/lisp")
-    (require 'ledger-mode)))

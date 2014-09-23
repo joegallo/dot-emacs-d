@@ -213,3 +213,16 @@
 ;; === uhhhh python stuff i guess ===
 (elpy-enable)
 (elpy-use-ipython)
+
+;; === work stuff ===
+(let ((sonian-nav-file "~/Code/sa-safe/.elisp/sonian-navigation.el"))
+  (when (file-exists-p sonian-nav-file)
+    (load (expand-file-name sonian-nav-file))))
+
+;; === ledger stuff ===
+(let ((ledger-file "~/Code/ledger/lisp/ledger-mode.el"))
+  (when (file-exists-p ledger-file)
+    (setq ledger-post-account-alignment-column 2)
+    (custom-set-faces '(ledger-font-xact-highlight-face ((t (:background "color-234")))))
+    (add-to-list 'load-path "~/Code/ledger/lisp")
+    (require 'ledger-mode)))

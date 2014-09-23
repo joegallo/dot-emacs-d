@@ -111,12 +111,6 @@
       (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
 (global-set-key (kbd "C-x 4 t") 'transpose-buffers)
 
-;; === more like esk-ugly-fn ===
-(remove-hook 'clojure-mode-hook 'esk-pretty-fn)
-
-;; === fix for silly clojure-jack-in ballsness ===
-(remove-hook 'slime-indentation-update-hooks 'put-clojure-indent)
-
 ;; === don't echo my commands in shell mode ===
 (defun comint-stfu ()
   (setq comint-process-echoes t))

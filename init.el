@@ -10,6 +10,7 @@
                       cider
                       color-theme
                       color-theme-twilight
+                      elpy
                       gist
                       idle-highlight-mode
                       ido-ubiquitous
@@ -208,3 +209,7 @@
 
 ;; (add-hook 'nrepl-mode-hook 'set-auto-complete-as-completion-at-point-function)
 ;; (add-hook 'nrepl-interaction-mode-hook 'set-auto-complete-as-completion-at-point-function)
+
+;; === uhhhh python stuff i guess ===
+(elpy-enable)
+(elpy-use-ipython)

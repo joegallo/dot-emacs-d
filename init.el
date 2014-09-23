@@ -139,7 +139,7 @@
     (setenv "SSH_AUTH_SOCK" agent)
     (message agent)))
 
-;; === awesomely reenabled paredit when conflicts are gone
+;; === awesomely reenable paredit when conflicts are gone
 (defvar reenable-paredit-modes
   '(emacs-lisp-mode clojure-mode lisp-mode)
   "Modes to automatically re-enable paredit for after fixing version-control conflict markers")

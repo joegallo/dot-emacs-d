@@ -36,6 +36,7 @@
       make-backup-files nil
       require-final-newline t
       visible-bell nil)
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; === smex is great ===
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))

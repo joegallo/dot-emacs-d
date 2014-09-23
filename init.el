@@ -3,13 +3,21 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://hiddencameras.milkbox.net/packages/") t)
+             '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
 (package-initialize)
 
-(defvar my-packages '(starter-kit starter-kit-lisp starter-kit-bindings
-                                  clojure-mode clojure-test-mode
-                                  color-theme color-theme-twilight
-                                  gist markdown-mode nrepl))
+(defvar my-packages '(better-defaults
+                      cider
+                      color-theme
+                      color-theme-twilight
+                      gist
+                      idle-highlight-mode
+                      ido-ubiquitous
+                      magit
+                      markdown-mode
+                      paredit
+                      smex
+                      yaml-mode))
 
 (when (null package-archive-contents)
   (package-refresh-contents))
@@ -63,6 +71,17 @@
      (set-face-foreground 'magit-diff-del "red3")
      (when (not window-system)
        (set-face-background 'magit-item-highlight "gray13"))))
+
+;; === useful keys ===
+(global-set-key (kbd "C-c g") 'magit-status)
+
+(defun cleanup-buffer ()
+  (interactive)
+  (untabify (point-min) (point-max))
+  (indent-region (point-min) (point-max))
+  (delete-trailing-whitespace))
+
+(global-set-key (kbd "C-c n") 'cleanup-buffer)
 
 ;; === find file in project ===
 (setq ffip-patterns ".*")
@@ -163,10 +182,10 @@
 (global-set-key (kbd "C-c a") 'mark-git-conflict-resolved)
 
 ;; === nrepl and stuff, not quite finished here
-(add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
-(add-hook 'nrepl-interaction-mode-hook 'subword-mode)
-(add-hook 'nrepl-repl-mode-hook 'subword-mode)
-(add-hook 'nrepl-repl-mode-hook 'paredit-mode)
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-mode-hook 'subword-mode)
+(add-hook 'cider-repl-mode-hook 'subword-mode)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 ;; (require 'auto-complete-config)
 ;; (ac-config-default)

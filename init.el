@@ -36,7 +36,8 @@
       initial-scratch-message nil
       make-backup-files nil
       require-final-newline t
-      visible-bell nil)
+      visible-bell nil
+      whitespace-style '(face trailing lines-tail tabs))
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; === smex is great ===

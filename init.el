@@ -1,4 +1,4 @@
-;; === bootstrap the starter kit ===
+;; === bootstrap packages ===
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))

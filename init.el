@@ -29,6 +29,7 @@
 
 ;; === un-annoy ===
 (global-hl-line-mode 1)
+(column-number-mode t)
 (setq auto-save-default nil
       ido-use-virtual-buffers nil
       inhibit-startup-message t
